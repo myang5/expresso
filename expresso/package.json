@@ -1,0 +1,15 @@
+{
+  "name": "expresso",
+  "version": "1.0.0",
+  "description": "An extension of Express that handles HTCPCP",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Midori Yang",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "methods": "^1.1.2"
+  }
+}

@@ -1,15 +1,19 @@
-const express = require('express');
-const app = express();
+const expresso = require('../expresso');
+const app = expresso();
 const path = require('path');
+const htcpcp = require('../expresso/lib/htcpcp-server')
 
-// statically serve everything in the build folder on the route '/build'
-if (process.env.NODE_ENV === 'production') {
-  app.use('/build', express.static(path.join(__dirname, '../build')));
-  // serve index.html on the route '/'
-  app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '../build/index.html'));
-  });
-}
+app.use((req, res, next) => {console.log(req.method); next()});
 
-app.listen(3000); //listens on port 3000 -> http://localhost:3000/
+app.get('/', (req, res) => {
+  res.send('Successful GET request');
+});
+app.brew('/', (req, res) => {
+  res.send('Successful BREW request');
+});
+
+//app.listen(3000, () => console.log('Listening on port 3000'))
+
+const server = htcpcp.createServer();
+server.listen(3000, () => console.log('HTCPCP Listening on port 3000'))
 
